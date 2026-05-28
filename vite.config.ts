@@ -5,12 +5,12 @@ import { traeBadgePlugin } from 'vite-plugin-trae-solo-badge';
 
 // https://vite.dev/config/
 export default defineConfig({
-  // ========== 关键修改：适配 GitHub Pages 部署的基础路径 ==========
-  // 这里的仓库名要和你 GitHub 上的仓库名完全一致（注意大小写）
-  base: '/神州特工/',
+  // ========== 关键修正：base必须和GitHub仓库名完全一致（区分大小写） ==========
+  // 你的仓库名是 SHENZHOU-Agent，所以必须写成 /SHENZHOU-Agent/
+  base: '/SHENZHOU-Agent/', 
   build: {
     sourcemap: 'hidden',
-    // 显式指定输出目录，确保 GitHub Actions 能找到构建产物
+    // 确保构建产物输出到dist目录，和GitHub Actions配置一致
     outDir: 'dist'
   },
   plugins: [
