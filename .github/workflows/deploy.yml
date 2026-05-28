@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 on:
   push:
-    # 你的主分支名，和当前仓库保持一致
-    branches: [ main ] 
+    branches: [ main ]
+# 关键：授予工作流写入权限，才能推送gh-pages分支
+permissions:
+  contents: write
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -10,21 +12,23 @@ jobs:
       - name: 拉取代码
         uses: actions/checkout@v4
 
-      - name: 配置Node.js
+      - name: 配置Node.js（使用稳定LTS版本18）
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: 'npm'
+
+      - name: 配置国内npm源，解决依赖安装失败
+        run: npm config set registry https://registry.npmmirror.com
 
       - name: 安装依赖
         run: npm install
 
-      - name: 构建Vite项目
+      - name: 构建Vite项目（本地先执行npm run build验证无报错）
         run: npm run build
 
       - name: 部署到GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # 和你 vite.config.ts 里的 outDir 配置一致
-          publish_dir: ./dist 
+          publish_dir: ./dist
