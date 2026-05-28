@@ -95,9 +95,9 @@ export default function Login() {
                   <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-red-500 focus:ring-red-500" />
                   <span>记住我</span>
                 </label>
-                <a href="#" className="text-sm text-red-600 hover:text-red-700 transition-colors">
+                <span className="text-sm text-red-600 hover:text-red-700 transition-colors cursor-pointer">
                   忘记密码？
-                </a>
+                </span>
               </div>
             )}
 
@@ -154,9 +154,9 @@ export default function Login() {
 
         <p className="mt-6 text-center text-sm text-gray-500">
           登录即表示您同意我们的服务说明
-          <a href="#" className="text-red-600 hover:text-red-700 transition-colors">服务条款</a>
+          <span className="text-red-600 hover:text-red-700 transition-colors cursor-pointer">服务条款</span>
           和
-          <a href="#" className="text-red-600 hover:text-red-700 transition-colors">隐私政策</a>
+          <span className="text-red-600 hover:text-red-700 transition-colors cursor-pointer">隐私政策</span>
         </p>
       </div>
     </div>

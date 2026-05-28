@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ParticleBg from '@/components/ParticleBg';
@@ -146,10 +147,10 @@ export default function Agents() {
                   </div>
 
                   {agent.href ? (
-                    <a href={agent.href} className={`w-full py-3 rounded-xl bg-gradient-to-r ${agent.gradient} text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2 inline-flex`}>
+                    <Link to={agent.href} className={`w-full py-3 rounded-xl bg-gradient-to-r ${agent.gradient} text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2 inline-flex`}>
                       了解详情
                       <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                   ) : (
                     <button className={`w-full py-3 rounded-xl bg-gradient-to-r ${agent.gradient} text-white font-semibold hover:shadow-lg transition-all flex items-center justify-center gap-2`}>
                       开始使用
