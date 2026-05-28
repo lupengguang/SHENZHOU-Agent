@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Server, Zap, Shield, Workflow, Cpu, Lock, ArrowRight } from 'lucide-react';
 
 const features = [
@@ -92,13 +93,13 @@ export default function Features() {
             );
             return (
               feature.href ? (
-                <a
+                <Link
                   key={index}
-                  href={feature.href}
+                  to={feature.href}
                   className="group relative p-8 rounded-2xl bg-white border border-gray-100 hover:border-red-200 hover:shadow-xl hover:shadow-red-500/5 transition-all duration-300 transform hover:-translate-y-2 block"
                 >
                   {CardContent}
-                </a>
+                </Link>
               ) : (
                 <div
                   key={index}
