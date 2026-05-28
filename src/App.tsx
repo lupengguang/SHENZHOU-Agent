@@ -15,7 +15,9 @@ import Agents from '@/pages/Agents';
 import EducationAgent from '@/pages/EducationAgent';
 import FoodRecommendationAgent from '@/pages/FoodRecommendationAgent';
 import FoodTeachingAgent from '@/pages/FoodTeachingAgent';
+import FullStackDevAgent from '@/pages/FullStackDevAgent';
 import Developer from '@/pages/Developer';
+import ApplyJoin from '@/pages/ApplyJoin';
 
 export default function App() {
   return (
@@ -38,6 +40,8 @@ export default function App() {
         <Route path="/agents/education" element={<EducationAgent />} />
         <Route path="/agents/food-recommendation" element={<FoodRecommendationAgent />} />
         <Route path="/agents/food-teaching" element={<FoodTeachingAgent />} />
+        <Route path="/agents/fullstack-dev" element={<FullStackDevAgent />} />
+        <Route path="/apply-join" element={<ApplyJoin />} />
       </Routes>
     </Router>
   );

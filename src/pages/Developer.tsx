@@ -32,7 +32,7 @@ export default function Developer() {
     },
     {
       name: '陆鹏光',
-      title: '全栈AI开发工程师',
+      title: '全栈大模型AI开发工程师',
       avatar: 'LP',
       avatarBg: 'bg-purple-500',
       certifications: [
@@ -48,6 +48,19 @@ export default function Developer() {
         'Forage 品牌与设计证书',
         'Cyber网络安全风险分析证书',
         'AlCoding Engineer能力认证证书',
+      ],
+    },
+    {
+      name: '王宇欣',
+      title: 'AIGC设计师 / 前端开发者',
+      avatar: 'WY',
+      avatarBg: 'bg-pink-500',
+      certifications: [
+        '平面设计师初级',
+        'Forage品牌与设计',
+        '计算机一级证书',
+        'AIGC设计师',
+        '前端初级开发者',
       ],
     },
   ];
@@ -70,7 +83,7 @@ export default function Developer() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {developers.map((dev) => (
               <div key={dev.name} className="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
                 <div className="text-center mb-6">
@@ -128,9 +141,12 @@ export default function Developer() {
               我们正在寻找热爱AI技术的开发者加入团队，共同推动智能体技术的发展
             </p>
             <div className="flex justify-center">
-              <button className="px-8 py-3 bg-white text-purple-600 rounded-xl font-semibold hover:shadow-lg transition-all">
+              <a
+                href="/apply-join"
+                className="px-8 py-3 bg-white text-purple-600 rounded-xl font-semibold hover:shadow-lg transition-all inline-block"
+              >
                 申请加入
-              </button>
+              </a>
             </div>
           </div>
         </div>

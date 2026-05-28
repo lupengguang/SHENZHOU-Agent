@@ -79,6 +79,7 @@ export default function Agents() {
       ],
       useCases: ['软件开发', '系统架构设计', '代码审查', '技术咨询'],
       rating: 5,
+      href: '/agents/fullstack-dev',
     },
   ];
 
