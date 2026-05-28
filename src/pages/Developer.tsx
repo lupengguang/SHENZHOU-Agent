@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ParticleBg from '@/components/ParticleBg';
@@ -141,12 +142,12 @@ export default function Developer() {
               我们正在寻找热爱AI技术的开发者加入团队，共同推动智能体技术的发展
             </p>
             <div className="flex justify-center">
-              <a
-                href="/apply-join"
+              <Link
+                to="/apply-join"
                 className="px-8 py-3 bg-white text-purple-600 rounded-xl font-semibold hover:shadow-lg transition-all inline-block"
               >
                 申请加入
-              </a>
+              </Link>
             </div>
           </div>
         </div>

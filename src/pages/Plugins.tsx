@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ParticleBg from '@/components/ParticleBg';
@@ -260,10 +261,10 @@ export default function Plugins() {
               <p className="text-sm text-gray-600 mb-4">
                 探索千余款经过安全核验的标准化插件，覆盖办公协同、研发运维、数据处理等全场景。
               </p>
-              <a href="/plugin-market" className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors inline-flex">
+              <Link to="/plugin-market" className="flex items-center gap-2 px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition-colors inline-flex">
                 进入插件市场
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </Link>
             </div>
             <div className="bg-gray-50 rounded-xl p-6">
               <h3 className="font-semibold text-gray-900 mb-4">开发自定义插件</h3>

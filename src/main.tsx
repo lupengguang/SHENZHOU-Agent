@@ -1,7 +1,7 @@
 // src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// 关键：用HashRouter替代BrowserRouter，解决GitHub Pages路由白屏问题
+// 关键：必须用 HashRouter，不能用 BrowserRouter
 import { HashRouter as Router } from 'react-router-dom';
 import App from './App';
 import './index.css';
