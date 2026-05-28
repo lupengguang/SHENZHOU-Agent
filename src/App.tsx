@@ -1,22 +1,23 @@
+// src/App.tsx
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-// 关键：把BrowserRouter替换为HashRouter
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import App from './App';
-import './index.css';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+// 导入你的其他页面组件
+// import Agents from './pages/Agents';
+// import Community from './pages/Community';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-
-root.render(
-  <React.StrictMode>
-    {/* 用HashRouter包裹整个应用 */}
-    <Router>
+function App() {
+  return (
+    <div className="App">
       <Routes>
-        <Route path="/" element={<App />} />
-        {/* 其他路由保持不变 */}
+        <Route path="/" element={<Home />} />
+        {/* 其他路由保持不变，例如： */}
+        {/* <Route path="/agents" element={<Agents />} /> */}
+        {/* <Route path="/community" element={<Community />} /> */}
       </Routes>
-    </Router>
-  </React.StrictMode>
-);
+    </div>
+  );
+}
+
+// 关键：添加默认导出
+export default App;
