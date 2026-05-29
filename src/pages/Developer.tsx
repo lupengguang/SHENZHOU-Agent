@@ -64,6 +64,23 @@ export default function Developer() {
         '前端初级开发者',
       ],
     },
+    {
+      name: '刘可心',
+      title: '优秀学员',
+      avatar: 'LK',
+      avatarBg: 'bg-cyan-500',
+      achievements: [
+        { name: '优秀学员（2022年9月）', award: '军训期间' },
+        { name: '学习之星（2022/2023学年第二学期）', award: '2023年11月颁发' },
+        { name: '社团积极分子（2023-2024学年第一学期）', award: '2023年12月颁发' },
+        { name: '社会实践先进个人（2024年寒假主题活动）', award: '2024年5月颁发' },
+        { name: '三好学生（2023/2024学年第二学期）', award: '2024年11月颁发' },
+        { name: '社会实践先进个人（2024年"石榴籽同心 中华一家亲"主题活动）', award: '2024年11月颁发' },
+        { name: '社会实践先进个人（2024年"劳动创造幸福・技能职引人生"主题活动）', award: '2024年11月颁发' },
+        { name: '优秀三好生（2024/2025学年第一学期）', award: '2025年4月颁发' },
+        { name: '第十七期大学生创新创业项目路演优秀奖（项目负责人）', award: '2025年11月颁发' },
+      ],
+    },
   ];
 
   return (
@@ -84,7 +101,7 @@ export default function Developer() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {developers.map((dev) => (
               <div key={dev.name} className="bg-gray-50 rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
                 <div className="text-center mb-6">
@@ -101,7 +118,7 @@ export default function Developer() {
                       <Trophy className="w-5 h-5 text-yellow-500" />
                       <h4 className="font-semibold text-gray-900">荣誉奖项</h4>
                     </div>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 max-h-80 overflow-y-auto">
                       {dev.achievements.map((item, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <Star className="w-4 h-4 text-yellow-500 flex-shrink-0 mt-0.5" />

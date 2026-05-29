@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ParticleBg from '@/components/ParticleBg';
@@ -23,11 +24,12 @@ export default function Pricing() {
       cta: '免费开始',
       popular: false,
       color: 'gray',
+      type: 'free',
     },
     {
       name: '个人标准版',
       icon: Zap,
-      price: isYearly ? '3999' : '39.9',
+      price: isYearly ? '399' : '39.9',
       period: isYearly ? '/年' : '/月',
       description: '解锁离线运行、全量基础插件',
       features: [
@@ -40,11 +42,12 @@ export default function Pricing() {
       cta: '立即订阅',
       popular: false,
       color: 'blue',
+      type: 'personal',
     },
     {
       name: '个人专业版',
       icon: Crown,
-      price: isYearly ? '9999' : '99.9',
+      price: isYearly ? '999' : '99.9',
       period: isYearly ? '/年' : '/月',
       description: '开放低代码开发、海量插件',
       features: [
@@ -57,6 +60,7 @@ export default function Pricing() {
       cta: '立即订阅',
       popular: true,
       color: 'purple',
+      type: 'personal',
     },
   ];
 
@@ -64,7 +68,7 @@ export default function Pricing() {
     {
       name: '协作版',
       icon: Building2,
-      price: isYearly ? '19999' : '199.9',
+      price: isYearly ? '1999' : '199.9',
       period: isYearly ? '/账号/年' : '/账号/月',
       description: '团队协同、权限管控、全流程自动化',
       features: [
@@ -74,14 +78,15 @@ export default function Pricing() {
         '团队共享知识库',
         '团队数据分析报表',
       ],
-      cta: '联系销售',
+      cta: '立即订阅',
       popular: false,
       color: 'green',
+      type: 'team',
     },
     {
       name: '企业尊享版',
       icon: Shield,
-      price: isYearly ? '3999' : '399',
+      price: isYearly ? '3999' : '399.9',
       period: isYearly ? '/账号/年' : '/账号/月',
       description: '搭载行业插件、数据脱敏、7×24技术支持',
       features: [
@@ -91,9 +96,10 @@ export default function Pricing() {
         '7×24 专属技术支持',
         'SLA 服务保障',
       ],
-      cta: '联系销售',
+      cta: '立即订阅',
       popular: true,
       color: 'red',
+      type: 'team',
     },
   ];
 
@@ -114,11 +120,12 @@ export default function Pricing() {
       cta: '联系销售',
       popular: false,
       color: 'orange',
+      type: 'enterprise',
     },
     {
       name: '高阶涉密版',
       icon: Shield,
-      price: '99800',
+      price: '9980',
       period: '/年起',
       description: '适配等保合规、国密加密、隔离内网环境',
       features: [
@@ -131,6 +138,7 @@ export default function Pricing() {
       cta: '联系销售',
       popular: false,
       color: 'dark',
+      type: 'enterprise',
     },
     {
       name: '定制专属版',
@@ -148,6 +156,7 @@ export default function Pricing() {
       cta: '联系销售',
       popular: true,
       color: 'gold',
+      type: 'enterprise',
     },
   ];
 
@@ -157,6 +166,21 @@ export default function Pricing() {
     { title: '场景独家优势', desc: '所有订阅套餐均支持纯内网离线运行，可落地隔离涉密环境；龙虾、CloudCode 强制联网，高端场景无法使用。' },
     { title: '服务优势', desc: '免费版本迭代、插件持续更新、数据安全维护、竞品业务免费迁移服务，企业用户配备专属技术顾问。' },
   ];
+
+  const getPaymentUrl = (plan: any) => {
+    const params = new URLSearchParams({
+      plan: plan.name,
+      price: plan.price,
+      period: plan.period,
+      type: plan.type,
+    });
+    if (isYearly) {
+      params.append('billing', 'yearly');
+    } else {
+      params.append('billing', 'monthly');
+    }
+    return `/payment?${params.toString()}`;
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -236,15 +260,30 @@ export default function Pricing() {
                         </li>
                       ))}
                     </ul>
-                    <button
-                      className={`w-full py-3 rounded-xl font-medium transition-all ${
-                        plan.popular
-                          ? 'bg-purple-500 text-white hover:bg-purple-600'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      {plan.cta}
-                    </button>
+                    {plan.type === 'free' ? (
+                      <Link
+                        to="/login"
+                        className={`w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2 ${
+                          plan.popular
+                            ? 'bg-purple-500 text-white hover:bg-purple-600'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        {plan.cta}
+                      </Link>
+                    ) : (
+                      <Link
+                        to={getPaymentUrl(plan)}
+                        className={`w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2 ${
+                          plan.popular
+                            ? 'bg-purple-500 text-white hover:bg-purple-600'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        {plan.cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    )}
                   </div>
                 );
               })}
@@ -287,7 +326,8 @@ export default function Pricing() {
                         </li>
                       ))}
                     </ul>
-                    <button
+                    <Link
+                      to={getPaymentUrl(plan)}
                       className={`w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2 ${
                         plan.popular
                           ? 'bg-red-500 text-white hover:bg-red-600'
@@ -296,7 +336,7 @@ export default function Pricing() {
                     >
                       {plan.cta}
                       <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 );
               })}
@@ -345,7 +385,8 @@ export default function Pricing() {
                         </li>
                       ))}
                     </ul>
-                    <button
+                    <Link
+                      to={getPaymentUrl(plan)}
                       className={`w-full py-3 rounded-xl font-medium transition-all flex items-center justify-center gap-2 ${
                         plan.popular
                           ? 'bg-yellow-500 text-white hover:bg-yellow-600'
@@ -354,7 +395,7 @@ export default function Pricing() {
                     >
                       {plan.cta}
                       <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 );
               })}

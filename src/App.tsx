@@ -22,6 +22,7 @@ import FoodRecommendationAgent from './pages/FoodRecommendationAgent';
 import FoodTeachingAgent from './pages/FoodTeachingAgent';
 import FullStackDevAgent from './pages/FullStackDevAgent';
 import ApplyJoin from './pages/ApplyJoin';
+import Payment from './pages/Payment';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
 
         {/* 其他页面 */}
         <Route path="/apply-join" element={<ApplyJoin />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
     </div>
   );
